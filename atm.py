@@ -155,8 +155,12 @@ def deposit():
     amt_to_deposit = int(input('How much would you like to deposit:  '))
     balance +=amt_to_deposit
 
-    database[account_number].append(balance)
-    print(f'Your new balance is {balance}')
+    if len(database[account_number]) == 5:
+        database[account_number][4] += balance
+    else:
+        database[account_number].append(balance)
+
+    print(f'Your new balance is {database[account_number][4]}')
     perform()
 
 
